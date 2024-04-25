@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+ <body style="height: 100vh; margin: 0; display: flex; justify-content: center; align-items: center;">
+
+
+<script>
+function changeColor(color) {
+  var pic;
+  if (color === 'red') {
+    pic = "red.png";
+  } else if (color === 'yellow') {
+    pic = "yellow.png";
+  } else if (color === 'green') {
+    pic = "green.png";
+  } else {
+    console.error("Invalid color");
+    return;
+  }
+  document.getElementById('myImage').src = pic;
+}
+
+function getRandomColor() {
+  var colors = ['red', 'yellow', 'green'];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function autoChangeColor() {
+  var randomInterval = Math.floor(Math.random() * (9000 - 6000 + 1)) + 6000;
+  setInterval(function() {
+    var color = getRandomColor();
+    changeColor(color);
+  }, randomInterval);
+}
+
+window.onload = function() {
+  autoChangeColor();
+};
+</script>
+
+<img id="myImage" src="red.png" width="120" height="210" style="display: block; margin: 0 auto;">
+
+
+</body>
+</html>
